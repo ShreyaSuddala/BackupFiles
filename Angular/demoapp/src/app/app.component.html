@@ -1,0 +1,24 @@
+<h1>{{ title }}</h1>
+<p>{{ data }}</p>
+
+
+<p *ngIf="show">This is a heading</p>
+
+<table border="1">
+  <tr *ngFor="let c of cities">
+    <td>{{ c }}</td>
+  </tr>
+</table>
+
+<app-header></app-header>
+
+<div [ngSwitch]="operation">
+  <p *ngSwitchCase="'+'">{{ num1 }} + {{ num2 }} = {{ num1 + num2 }}</p>
+  <p *ngSwitchCase="'-'">{{ num1 }} - {{ num2 }} = {{ num1 - num2 }}</p>
+  <p *ngSwitchCase="'*'">{{ num1 }} * {{ num2 }} = {{ num1 * num2 }}</p>
+  <p *ngSwitchCase="'/'">{{ num1 }} / {{ num2 }} = {{ num1 / num2 }}</p>
+  <p *ngSwitchDefault>Select an operation</p>
+</div>
+
+
+

@@ -1,0 +1,13 @@
+.overview{
+    overflow-x: scroll;
+}
+.customtable{
+    overflow-x: scroll;
+}
+.customtable::-webkit-scrollbar{
+    width: 5px;
+    
+}
+.customtable::-moz-scrollbar{
+    width: 5px;
+}

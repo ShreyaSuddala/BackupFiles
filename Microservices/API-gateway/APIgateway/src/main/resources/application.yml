@@ -1,0 +1,19 @@
+server:
+  port: 8781
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: doctors-service
+            uri: http://localhost:8081/
+            predicates:
+              - Path=/doctors/**
+          - id: patient-service
+            uri: http://localhost:8082/
+            predicates:
+              - Path=/patients/**
+
+  application:
+    name: APIgateway

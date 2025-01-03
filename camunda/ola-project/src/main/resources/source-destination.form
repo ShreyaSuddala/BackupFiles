@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "label": "pickup_point",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0fqcv3a",
+        "columns": null
+      },
+      "id": "Field_0enixlf",
+      "key": "pickup_point",
+      "description": "please enter your pick up location"
+    },
+    {
+      "label": "drop_location",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1cum7mz",
+        "columns": null
+      },
+      "id": "Field_01iyf73",
+      "key": "drop_location",
+      "description": "please enter the destination"
+    }
+  ],
+  "type": "default",
+  "id": "source-destination",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.25.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

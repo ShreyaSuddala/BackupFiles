@@ -1,0 +1,12 @@
+<div *ngIf="subcategory" class="tech">
+    <h2>{{ childCategory }}</h2>
+    <div *ngFor="let key of getKeys(subcategory)" class="subtech">
+      <h3>{{ key }}</h3>
+      <ul>
+        <li *ngFor="let item of subcategory[key]">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

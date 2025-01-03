@@ -1,0 +1,87 @@
+{
+    "IT_Industry": {
+      "Technologies": {
+        "SoftwareDevelopment": {
+          "FrontEnd Development": {
+            "Technologies": ["HTML", "CSS", "JavaScript", "TypeScript"],
+            "Frameworks_Libraries": ["React", "Angular", "Vue.js", "Svelte"],
+            "Tools": ["Webpack", "Babel", "ESLint", "Prettier"]
+          },
+          "BackEnd Development": {
+            "Languages": ["Java", "Python", "Ruby", "PHP", "JavaScript (Node.js)", "C#", "Go"],
+            "Frameworks": ["Spring (Java)", "Django/Flask (Python)", "Ruby on Rails (Ruby)", "Laravel (PHP)", "Express (Node.js)", "ASP.NET (C#)"]
+          },
+          "FullStack Development": {
+            "Technologies": ["Combination of front-end and back-end technologies"],
+            "Frameworks_Tools": ["MEAN/MERN stack (MongoDB, Express.js, Angular/React, Node.js)", "LAMP stack (Linux, Apache, MySQL, PHP)"]
+          }
+        },
+        "MobileDevelopment": {
+          "Platforms": ["Android", "iOS"],
+          "Languages": ["Java", "Kotlin (Android)", "Swift", "Objective-C (iOS)"],
+          "Frameworks Tools": ["React Native", "Flutter", "Xamarin", "Ionic"]
+        },
+        "DevOps and Infrastructure": {
+          "Technologies": ["Docker", "Kubernetes", "Jenkins", "Terraform", "Ansible", "Chef", "Puppet"],
+          "Cloud Platforms": ["AWS", "Azure", "Google Cloud Platform (GCP)", "IBM Cloud"],
+          "CI CD Tools": ["CircleCI", "GitLab CI", "Travis CI"]
+        },
+        "DataManagement and Analytics": {
+          "Database Management": {
+            "SQL Databases": ["MySQL", "PostgreSQL", "Oracle", "SQL Server"],
+            "NoSQL Databases": ["MongoDB", "Cassandra", "Redis", "Couchbase"]
+          },
+          "BigData": {
+            "Technologies": ["Hadoop", "Apache Spark", "Apache Kafka", "Flink", "Storm"],
+            "Data Warehousing": ["Amazon Redshift", "Google BigQuery", "Snowflake"]
+          },
+          "DataAnalytics": {
+            "Tools": ["Tableau", "Power BI", "Looker"],
+            "Languages": ["Python", "R"],
+            "Libraries": ["Pandas", "NumPy", "SciPy", "Scikit-learn", "TensorFlow"]
+          }
+        },
+        "Cybersecurity": {
+          "Technologies": ["Firewalls", "Intrusion Detection Systems (IDS)", "Intrusion Prevention Systems (IPS)", "SIEM (Security Information and Event Management)"],
+          "Tools": ["Wireshark", "Metasploit", "Nmap", "Nessus"],
+          "Frameworks": ["NIST Cybersecurity Framework", "ISO/IEC 27001"]
+        },
+        "ArtificialIntelligence": {
+          "Languages": ["Python", "R", "Java", "Julia"],
+          "Frameworks Libraries": ["TensorFlow", "Keras", "PyTorch", "Scikit-learn", "OpenCV"],
+          "Tools": ["Jupyter Notebooks", "Anaconda", "Google Colab"]
+        },
+        "WebDevelopment": {
+          "Content ManagementSystems": {
+            "Platforms": ["WordPress", "Drupal", "Joomla", "Magento"]
+          },
+          "E_commerce Platforms": {
+            "Technologies": ["Shopify", "WooCommerce", "BigCommerce", "Magento"]
+          }
+        },
+        "Blockchain and Cryptocurrency": {
+          "Technologies": ["Bitcoin", "Ethereum", "Hyperledger", "EOS"],
+          "Tools": ["Truffle", "Ganache", "MetaMask", "Solidity (Ethereum Smart Contracts)"]
+        },
+        "Networking": {
+          "Technologies": ["TCP/IP", "DNS", "DHCP", "VPN"],
+          "Tools": ["Cisco Packet Tracer", "Wireshark", "OpenVPN"],
+          "Protocols": ["HTTP/HTTPS", "FTP", "SMTP", "SNMP"]
+        },
+        "Emerging Technologies": {
+          "Internet of Things (IoT)": {
+            "Platforms": ["AWS IoT", "Azure IoT", "Google Cloud IoT"],
+            "Protocols": ["MQTT", "CoAP", "Zigbee"]
+          },
+          "Edge Computing": {
+            "Platforms": ["AWS Greengrass", "Azure IoT Edge", "Google Edge TPU"]
+          },
+          "Quantum Computing": {
+            "Platforms": ["IBM Quantum Experience", "Google Quantum AI", "Microsoft Quantum"]
+          }
+        }
+      }
+    }
+  }
+ 
+  

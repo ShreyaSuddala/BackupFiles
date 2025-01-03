@@ -1,0 +1,68 @@
+AZURE
+
+Microsoft Azure is a cloud computing platform that offers a range of services and tools to help build, 
+run, and manage applications:
+
+===================================================================================
+Agile development methodology
+
+There are many different forms of the agile development method, including scrum, crystal, extreme programming (XP), and feature-driven development (FDD).
+ Pros: The primary benefit of agile software development is that it allows software to be released in iterations
+
+===================================================================================
+
+Jira is a project management tool that helps teams plan, track, and release software. 
+It can be used for a variety of purposes, including:
+Software development: Planning and launching campaigns
+Marketing: Managing and tracking requests
+IT: Building creative workflows
+Design: Creating custom processes
+Operations: Planning and organizing tasks 
+
+
+Jira's features include: 
+Agile project management: Supports agile methodologies like scrum and kanban 
+Resource management: Helps with organization, coordination, and visibility across a team's workload 
+Real-time tracking and reporting: Helps manage large, complex projects 
+Integrations: Integrates with third-party apps like Slack, Figma, and GitHub 
+Test case management: Includes automated and manual test case management fields 
+
+===================================================================================
+
+Scrum is a framework for agile project management that helps teams work together to achieve a common goal. 
+It's often used in software development, but its principles can be applied to many types of teamwork. 
+Here are some key aspects of Scrum:
+
+==Sprints==
+
+Teams break work into goals to be completed within time-boxed iterations called sprints.
+ Sprints are typically one to four weeks long. 
+
+==Self-organization==
+
+Scrum encourages teams to learn from experience, self-organize, and adapt to change. 
+
+==Roles==
+
+Scrum describes a set of roles, including the Scrum Master, who facilitates the process and acts as a servant leader, coach, mentor, and more. 
+
+==Feedback==
+
+Teams and the business use feedback from each sprint to determine what to build next. 
+
+==Visibility==
+
+Scrum provides daily visibility into the state of a project, which can help stakeholders plan and adjust their strategies
+
+
+==============================================================================
+
+A CI/CD pipeline is a series of automated steps that help software development teams streamline the process of creating, testing, and deploying applications. 
+CI/CD stands for continuous integration and continuous delivery or continuous deployment
+
+The phases of a CI/CD pipeline are:
+Build: Create and compile code
+Test: Test the code
+Deliver: Send an approved codebase to a production environment
+Deploy: Deploy the changes and move the final product into production 
+Some challenges that teams may face when adopting CI/CD include manual steps in the release process, downtime risk, and inefficient resource utilization

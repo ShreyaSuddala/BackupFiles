@@ -1,0 +1,36 @@
+.company-list-container {
+    background: linear-gradient(180deg, #aaa2b3 0%, #584f63 100%);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+
+  }
+  
+  .company-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .company-list li {
+    margin: 10px 0;
+  }
+  
+  .company-list a {
+    display: block;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .company-list a:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  

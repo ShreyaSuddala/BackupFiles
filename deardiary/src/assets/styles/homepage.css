@@ -1,0 +1,145 @@
+/* .homepage-container{
+    margin: 40px;
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between;
+}
+
+.image-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 50px 0px 0px 30px;
+
+   
+}
+.child1{
+    display: flex;
+    flex-direction: column;
+}
+
+.img1,.img3,.img2{
+    width: 350px;
+    height: 250px;
+    border-radius: 10%;
+    opacity: 0.8;
+}
+.img1{
+    transform: rotate(-15deg);
+}
+.img3{
+    transform: rotate(5deg);
+}
+.img2{
+ 
+    transform: rotate(10deg);
+}
+.signIn-section{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #f37f6a;
+    }
+    50% {
+        color: #39ca39; 
+    }
+    100% {
+        color: #1eddff;
+    }
+}
+.signIn-section .heading{
+    font-family:cursive;
+    font-size: 3em;
+    text-align: center;
+    margin: 0.5em;
+    text-shadow: 0 5px 5px rgba(160, 118, 99, 0.8);
+    animation: colorChange 4s linear infinite;
+
+}
+.signIn-section .sub-heading{
+    color: #bb5892;
+    font-size: 1.2em;
+    font-family:cursive;
+    text-align: center;
+    margin: 0.1em;
+    text-shadow: 5px 0 5px rgba(209, 149, 206, 0.8);
+}
+.start-link{
+    text-decoration: none;
+    margin: 50px;
+    color: #fa1f1f;
+    font-size: 1.8em;
+    font-style:italic;
+}
+.start-link:hover{
+    color: #3e3899;
+    text-shadow: 0 0 5px #3e3899;
+} */
+
+
+
+
+.homepage-container {
+    display: flex;
+    flex-direction: row;
+   
+}
+.left{
+    width: 60%;
+    height: 100vh;
+    background: linear-gradient(#f44336,#e57373,#ffcdd2);
+}
+.right{
+    width: 40%;
+    height: 100vh;
+    background: 
+        url('../images/pexels-leeloothefirst-5417622.jpg') left/cover no-repeat;
+    background-position: right;
+    /* background-size: 50% 100%;  */
+}
+@keyframes colorChange {
+    50% {
+        color: #000;
+    }
+    100% {
+        color: #fff; 
+    }
+   
+}
+.heading{
+    font-family:cursive;
+    font-size: 3em;
+    /* text-align: center; */
+    margin: 0.5em;
+    text-shadow: 0 5px 5px rgba(56, 55, 54, 0.8);
+    animation: colorChange 4s linear infinite;
+}
+.sub-heading{
+    color: #ffcdd2;
+    font-size: 1.2em;
+    font-family:cursive;
+    /* text-align: center; */
+    margin-left: 1.5em;
+    text-shadow: 1px 1px 1px #ef9a9a;
+}
+.signIn-link{
+    text-decoration: none;
+    color: goldenrod;
+    margin: 1.5em;
+    font-size: 20px;
+    font-style:oblique;
+    font-weight: 500;
+}
+.login-link{
+    margin-left: 1.5em;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid brown; */
+}
+.signIn-link:hover{
+    color: #514b83;
+}

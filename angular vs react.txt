@@ -1,0 +1,13 @@
+=======================REACT VS ANGULAR========================
+in react=>>
+For statemanagement -> hooks are used.
+
+in Angular =>>
+For statemangement -> services, observables,
+--services--
+Angular encourages sharing state between components using services. Services can be injected into components via Angular's dependency injection system. 
+They act as a single source of truth for the state and allow components to communicate with each other.
+
+Yes, two-way data binding can be used for state management in Angular, especially for managing local component state or state that involves user input. 
+It allows you to seamlessly synchronize data between the view (template) and the component class without having to manually update the state on every interaction.
+

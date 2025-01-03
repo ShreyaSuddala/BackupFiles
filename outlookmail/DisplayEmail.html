@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="DisplayEmail.css">
+</head>
+<body>
+   
+    <div class="email-container">
+    
+      <div class="email-header">
+        <h2 th:text="${email.subject}">Subject</h2>
+    
+        <p>
+          <span th:text="${email.from().getPersonalName()}">Person Name</span>
+    
+          &lt;<span mailto:th:text="${email.from().getemail()}">name@outlook.com</span>&gt;
+        </p>
+        <p>
+          To: <span th:text="${email.to()[0]}">Recipient Name</span>
+          <br>
+          Cc: <span th:text="${email.cc()[0]}">cc@outlook.com</span>
+        </p>
+        <p th:text="${email.sentDate()}">Thu 8/8/2024 7:04 PM</p>
+      </div>
+    
+      <div class="email-body">
+    
+    
+        <p th:text="${message}">contenet...</p>
+    
+    <!--    <p>Dear Customer,</p>-->
+    
+    
+    <!--    <p th:text="${email.message}"> content......</p>-->
+    
+    <!--    <p>Warm Regards,<br>-->
+    <!--      <span th:text="${email.signature}">HDFC Bank</span></p>-->
+      </div>
+    
+    
+    </div>
+   
+</body>
+</html>

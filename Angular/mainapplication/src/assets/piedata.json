@@ -1,0 +1,17 @@
+{
+    "IT_Industry": {
+      "Technologies": {
+        "SoftwareDevelopment": 45,
+        "MobileDevelopment": 25,
+        "DevOps and Infrastructure": 22,
+        "DataManagement and Analytics": 20,
+        "Cybersecurity": 12,
+        "ArtificialIntelligence": 15,
+        "WebDevelopment": 12,
+        "Blockchain and Cryptocurrency": 5,
+        "Networking": 8,
+        "Emerging Technologies": 10
+      }
+    }
+  }
+  

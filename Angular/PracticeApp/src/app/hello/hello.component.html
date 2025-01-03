@@ -1,0 +1,14 @@
+<div>
+    <h2>Child Component</h2>
+    <button (click)="sendNotification()">Click Me</button>
+</div>
+<br>
+
+<input value="abc@gmail.com" placeholder="a-b-c@gmail.com" #d/>
+
+<button (click)="UpdateEmail(d.value)">update</button>
+<br>
+<br>
+<div>
+    {{email}}
+</div>

@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "label": "Do you want to start the ride?",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0enu00t",
+        "columns": null
+      },
+      "id": "Field_0ro2lsb",
+      "key": "accept_reject",
+      "description": " please type \"yes\" or \"no\" to start/cancel the ride"
+    }
+  ],
+  "type": "default",
+  "id": "accept_reject",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.25.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

@@ -1,0 +1,34 @@
+   <!-- <div class="sidenav-container">
+    
+    <ul class="sidenav">
+      <ng-container *ngFor="let key of getKeys(data)" >
+        <li>
+          <button (click)="toggleExpand(key)" routerLinkActive="active">{{ key }}</button>
+          <ul *ngIf="isExpanded[key]" class="subkeys">
+            <ng-container *ngFor="let subKey of getKeys(data[key])">
+              <li>{{ subKey }}</li>
+            </ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+   -->
+
+   <div class="sidenav-container">
+    <ul class="sidenav">
+      <ng-container *ngFor="let parentKey of getKeys(data)">
+        <li>
+          <button (click)="toggleExpand(parentKey)" routerLinkActive="active">{{ parentKey }}</button>
+          <ul *ngIf="isExpanded[parentKey]" class="subkeys">
+            <ng-container *ngFor="let childKey of getKeys(data[parentKey])">
+              <li>
+                <button (click)="navigateToDetail(parentKey, childKey)" routerLinkActive="active">{{ childKey }}</button>
+              </li>
+            </ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  

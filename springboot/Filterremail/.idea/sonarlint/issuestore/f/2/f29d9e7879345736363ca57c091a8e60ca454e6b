@@ -1,0 +1,38 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(£äØ¤
+J
+java:S37409"/Provide the parametrized type for this generic.(ãÉÄûÿÿÿÿ
+E
+java:S3740<"/Provide the parametrized type for this generic.(üå ‹
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(£äØ¤
+‚
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(£äØ¤
+@	java:S106"+Replace this use of System.out by a logger.(‡—„¶
+E	java:S106 "+Replace this use of System.out by a logger.(şÜ¨ëùÿÿÿÿ
+E	java:S106!"+Replace this use of System.out by a logger.(ù›¨¥şÿÿÿÿ
+@	java:S106""+Replace this use of System.out by a logger.(´¢®¹
+E	java:S106#"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+E	java:S106$"+Replace this use of System.out by a logger.(ç¨›¯üÿÿÿÿ
+E	java:S106%"+Replace this use of System.out by a logger.(¼¢´İûÿÿÿÿ
+@	java:S106&"+Replace this use of System.out by a logger.(ÖË›®
+@	java:S106'"+Replace this use of System.out by a logger.(ÇºÈ³
+@	java:S106("+Replace this use of System.out by a logger.(ƒ”¨
+@	java:S106)"+Replace this use of System.out by a logger.(›ÎûÔ
+E	java:S106*"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+E	java:S1061"+Replace this use of System.out by a logger.(şú±Ÿûÿÿÿÿ
+@	java:S1062"+Replace this use of System.out by a logger.(ù ½Æ
+@	java:S1063"+Replace this use of System.out by a logger.(òğ´Ò
+@	java:S1064"+Replace this use of System.out by a logger.(ºúåâ
+@	java:S106;"+Replace this use of System.out by a logger.(ÅÇÈĞ
+E	java:S106="+Replace this use of System.out by a logger.(àâÓ‚ıÿÿÿÿ
+@	java:S106>"+Replace this use of System.out by a logger.(ÒêÇ
+@	java:S106?"+Replace this use of System.out by a logger.(­É¢Ñ
+O
+java:S6353S"4Use concise quantifier syntax '+' instead of '{1,}'.(™î’úÿÿÿÿ
+O
+java:S6353S"4Use concise quantifier syntax '+' instead of '{1,}'.(™î’úÿÿÿÿ
+E	java:S106]"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106^"+Replace this use of System.out by a logger.(§Åâ“
+E	java:S106_"+Replace this use of System.out by a logger.(üşò–ÿÿÿÿÿ
+Q	java:S125e"<This block of commented-out lines of code should be removed.(öñ¨æ

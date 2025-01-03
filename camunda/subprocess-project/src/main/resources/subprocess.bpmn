@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0d8l3q2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.25.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="subprocess" name="subprocess" isExecutable="true" camunda:historyTimeToLive="3">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_10pm5c5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:subProcess id="Activity_108mif6">
+      <bpmn:incoming>Flow_1xzsswc</bpmn:incoming>
+      <bpmn:outgoing>Flow_03u2lsa</bpmn:outgoing>
+      <bpmn:startEvent id="Event_1shl9lf">
+        <bpmn:outgoing>Flow_1kxextu</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1kxextu" sourceRef="Event_1shl9lf" targetRef="prepare_food" />
+      <bpmn:sequenceFlow id="Flow_18hcyzp" sourceRef="prepare_food" targetRef="food_is_ready" />
+      <bpmn:userTask id="prepare_food" name="prepare_food">
+        <bpmn:incoming>Flow_1kxextu</bpmn:incoming>
+        <bpmn:outgoing>Flow_18hcyzp</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:serviceTask id="food_is_ready" name="food_is_ready" camunda:delegateExpression="${food}">
+        <bpmn:incoming>Flow_18hcyzp</bpmn:incoming>
+      </bpmn:serviceTask>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_03u2lsa" sourceRef="Activity_108mif6" targetRef="finished_dinner" />
+    <bpmn:endEvent id="Event_0c3y3ag">
+      <bpmn:incoming>Flow_0cfgpx3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0cfgpx3" sourceRef="finished_dinner" targetRef="Event_0c3y3ag" />
+    <bpmn:boundaryEvent id="dinner_invitation" name="dinner_invitation" attachedToRef="Activity_108mif6">
+      <bpmn:outgoing>Flow_1kxi3qd</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_07sty8i" messageRef="Message_3173li6" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1kxi3qd" sourceRef="dinner_invitation" targetRef="going_out" />
+    <bpmn:sequenceFlow id="Flow_0vxl80u" sourceRef="going_out" targetRef="finished_dinner" />
+    <bpmn:sequenceFlow id="Flow_10pm5c5" sourceRef="StartEvent_1" targetRef="Dinner" />
+    <bpmn:sequenceFlow id="Flow_1xzsswc" sourceRef="Dinner" targetRef="Activity_108mif6" />
+    <bpmn:serviceTask id="Dinner" name="Dinner" camunda:delegateExpression="${dinner}">
+      <bpmn:incoming>Flow_10pm5c5</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xzsswc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="finished_dinner" name="finished_dinner" camunda:delegateExpression="${completed}">
+      <bpmn:incoming>Flow_03u2lsa</bpmn:incoming>
+      <bpmn:incoming>Flow_0vxl80u</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cfgpx3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="going_out" name="going_out">
+      <bpmn:incoming>Flow_1kxi3qd</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vxl80u</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:message id="Message_3173li6" name="invite" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="subprocess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0c3y3ag_di" bpmnElement="Event_0c3y3ag">
+        <dc:Bounds x="1142" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jtbwpy_di" bpmnElement="Dinner">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_163llo1_di" bpmnElement="finished_dinner">
+        <dc:Bounds x="970" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zx30q8_di" bpmnElement="going_out">
+        <dc:Bounds x="850" y="310" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_108mif6_di" bpmnElement="Activity_108mif6" isExpanded="true">
+        <dc:Bounds x="480" y="77" width="420" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1shl9lf_di" bpmnElement="Event_1shl9lf">
+        <dc:Bounds x="520" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15pz8f8_di" bpmnElement="prepare_food">
+        <dc:Bounds x="620" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1c9hp38_di" bpmnElement="food_is_ready">
+        <dc:Bounds x="770" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1kxextu_di" bpmnElement="Flow_1kxextu">
+        <di:waypoint x="556" y="177" />
+        <di:waypoint x="620" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18hcyzp_di" bpmnElement="Flow_18hcyzp">
+        <di:waypoint x="720" y="177" />
+        <di:waypoint x="770" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_10hzwz6_di" bpmnElement="dinner_invitation">
+        <dc:Bounds x="762" y="249" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="740" y="292" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_03u2lsa_di" bpmnElement="Flow_03u2lsa">
+        <di:waypoint x="900" y="177" />
+        <di:waypoint x="970" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cfgpx3_di" bpmnElement="Flow_0cfgpx3">
+        <di:waypoint x="1070" y="177" />
+        <di:waypoint x="1142" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kxi3qd_di" bpmnElement="Flow_1kxi3qd">
+        <di:waypoint x="780" y="285" />
+        <di:waypoint x="780" y="350" />
+        <di:waypoint x="850" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vxl80u_di" bpmnElement="Flow_0vxl80u">
+        <di:waypoint x="950" y="350" />
+        <di:waypoint x="1020" y="350" />
+        <di:waypoint x="1020" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10pm5c5_di" bpmnElement="Flow_10pm5c5">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xzsswc_di" bpmnElement="Flow_1xzsswc">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="480" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

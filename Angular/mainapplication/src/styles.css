@@ -1,0 +1,11 @@
+
+
+html, body { height: 100%; }
+body { margin: 0; 
+  
+    /* background: linear-gradient(90deg ,#eae9f0 0%, #b2abd1 100%); */
+    background-color: white;
+    /* background-color: #4a475e; */
+    background: linear-gradient(180deg , #fafafc 0% ,#fafafc 100%);
+
+}

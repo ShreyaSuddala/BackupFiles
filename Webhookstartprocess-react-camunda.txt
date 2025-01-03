@@ -1,0 +1,57 @@
+1) npm install express http-proxy-middleware
+
+2) create one proxy.js file in the root of your project
+
+  write the below code in the file
+===========================================================
+const express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const app = express();
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).json({});
+  }
+
+  next();
+});
+
+app.use(
+  '/api', 
+  createProxyMiddleware({
+    target: 'https://syd-1.connectors.camunda.io', 
+    changeOrigin: true,
+    pathRewrite: {
+      '^/api': '',
+    },
+  })
+);
+
+app.listen(5000, () => {
+  console.log('Proxy server is running on http://localhost:5000');
+});
+======================================================================
+3) start the proxy server
+   
+	node <filename>.js
+
+
+4) use the remaining url excluding the base url
+
+	
+    try {
+      const response = await axios.post('http://localhost:5000/api/e94af90e-b94e-4218-ab73-fc2ce8a60957/inbound/4445', payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+
+5) start your react application 
+
+	npm start

@@ -1,0 +1,19 @@
+.tech {
+    display: flex;
+    background: linear-gradient(180deg, #aaa2b3 0%, #584f63 100%);
+    flex-direction: column;
+}
+
+h2, h3 {
+    color: white;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+

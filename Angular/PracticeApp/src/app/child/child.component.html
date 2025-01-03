@@ -1,0 +1,12 @@
+<p>{{message}}</p>
+
+
+<h3 #h>This is heading 1</h3>
+<h3 #h>This is heading 2</h3>
+<h3 #h>This is heading 3</h3>
+
+<button (click)="test()">Test</button>
+
+<div *ngFor="let heading of headings">
+  <p>{{ heading }}</p>
+</div>

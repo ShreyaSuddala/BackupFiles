@@ -1,0 +1,40 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "Car",
+          "value": "value"
+        },
+        {
+          "label": "Bike",
+          "value": "value2"
+        },
+        {
+          "label": "Auto-R",
+          "value": "value3"
+        }
+      ],
+      "label": "Select-car",
+      "type": "select",
+      "layout": {
+        "row": "Row_0qs0m6a",
+        "columns": null
+      },
+      "id": "Field_1j4rty0",
+      "key": "select_car",
+      "description": "please select the car",
+      "defaultValue": "value",
+      "searchable": true
+    }
+  ],
+  "type": "default",
+  "id": "Vehicle-form",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.25.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

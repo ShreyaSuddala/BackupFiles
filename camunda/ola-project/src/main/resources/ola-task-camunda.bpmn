@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0tz594j" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.25.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="ola-task" name="ola-task" isExecutable="true" camunda:historyTimeToLive="2">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1buxwu3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1buxwu3" sourceRef="StartEvent_1" targetRef="select_vehicle" />
+    <bpmn:userTask id="select_vehicle" name="select_vehicle" camunda:formRef="Vehicle-form" camunda:formRefBinding="latest">
+      <bpmn:incoming>Flow_1buxwu3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0f2xgtu</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0f2xgtu" sourceRef="select_vehicle" targetRef="source-destination" />
+    <bpmn:userTask id="source-destination" name="source-destination" camunda:formRef="source-destination" camunda:formRefBinding="latest">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0f2xgtu</bpmn:incoming>
+      <bpmn:incoming>cancelled_ride</bpmn:incoming>
+      <bpmn:incoming>rejected</bpmn:incoming>
+      <bpmn:outgoing>Flow_048ogv8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_048ogv8" sourceRef="source-destination" targetRef="nearestdriver" />
+    <bpmn:serviceTask id="nearestdriver" name="nearestdriver" camunda:delegateExpression="${service}">
+      <bpmn:incoming>Flow_048ogv8</bpmn:incoming>
+      <bpmn:outgoing>Flow_13hh4jq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_13hh4jq" sourceRef="nearestdriver" targetRef="user_Accept_Reject" />
+    <bpmn:userTask id="user_Accept_Reject" name="user_Accept/Reject" camunda:formRef="accept_reject" camunda:formRefBinding="latest">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_13hh4jq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bjt7jk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="accepted_or_rejected">
+      <bpmn:incoming>Flow_1bjt7jk</bpmn:incoming>
+      <bpmn:outgoing>accept</bpmn:outgoing>
+      <bpmn:outgoing>cancelled_ride</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1bjt7jk" sourceRef="user_Accept_Reject" targetRef="accepted_or_rejected" />
+    <bpmn:sequenceFlow id="accept" name="accepted_ride" sourceRef="accepted_or_rejected" targetRef="ride_confirmed">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${accept_reject == "yes"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="cancelled_ride" name="cancelled_ride" sourceRef="accepted_or_rejected" targetRef="source-destination">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${accept_reject == "no"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="ride_confirmed" name="ride_confirmation" camunda:delegateExpression="${ride}">
+      <bpmn:incoming>accept</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ycjvog</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0ycjvog" sourceRef="ride_confirmed" targetRef="driver_accept_reject" />
+    <bpmn:exclusiveGateway id="Gateway_07tt319">
+      <bpmn:incoming>Flow_0fnp24j</bpmn:incoming>
+      <bpmn:outgoing>rejected</bpmn:outgoing>
+      <bpmn:outgoing>accepted</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0fnp24j" sourceRef="driver_accept_reject" targetRef="Gateway_07tt319" />
+    <bpmn:userTask id="driver_accept_reject" name="driver_accept/reject" camunda:formRef="driver_acceptance" camunda:formRefBinding="latest">
+      <bpmn:incoming>Flow_0ycjvog</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fnp24j</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="rejected" name="rejected" sourceRef="Gateway_07tt319" targetRef="source-destination">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${driver_acceptance == "reject"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="accepted" name="accepted" sourceRef="Gateway_07tt319" targetRef="otp">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${driver_acceptance == "accept"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1a6gw60" sourceRef="otp" targetRef="ride_started" />
+    <bpmn:endEvent id="Event_0vje27x">
+      <bpmn:incoming>Flow_0rycxs5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0rycxs5" sourceRef="ride_started" targetRef="Event_0vje27x" />
+    <bpmn:serviceTask id="ride_started" name="ride_started" camunda:delegateExpression="${start}">
+      <bpmn:incoming>Flow_1a6gw60</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rycxs5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="otp" name="otp">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="otp" label="OTP" type="long" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>accepted</bpmn:incoming>
+      <bpmn:outgoing>Flow_1a6gw60</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ola-task">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="259" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0y6pjd2_di" bpmnElement="select_vehicle">
+        <dc:Bounds x="270" y="237" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0b23g8o_di" bpmnElement="source-destination">
+        <dc:Bounds x="430" y="237" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jr7bwc_di" bpmnElement="nearestdriver">
+        <dc:Bounds x="590" y="237" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mh0q32_di" bpmnElement="user_Accept_Reject">
+        <dc:Bounds x="750" y="237" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1orobgo_di" bpmnElement="accepted_or_rejected" isMarkerVisible="true">
+        <dc:Bounds x="915" y="252" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="900" y="149" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rfc2ge_di" bpmnElement="ride_confirmed">
+        <dc:Bounds x="900" y="390" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_07tt319_di" bpmnElement="Gateway_07tt319" isMarkerVisible="true">
+        <dc:Bounds x="545" y="405" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kzk4tf_di" bpmnElement="driver_accept_reject">
+        <dc:Bounds x="680" y="390" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vje27x_di" bpmnElement="Event_0vje27x">
+        <dc:Bounds x="179" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cjq68j_di" bpmnElement="ride_started">
+        <dc:Bounds x="300" y="540" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0h5w7lw_di" bpmnElement="otp">
+        <dc:Bounds x="300" y="390" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1buxwu3_di" bpmnElement="Flow_1buxwu3">
+        <di:waypoint x="215" y="277" />
+        <di:waypoint x="270" y="277" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f2xgtu_di" bpmnElement="Flow_0f2xgtu">
+        <di:waypoint x="370" y="277" />
+        <di:waypoint x="430" y="277" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12265nv_di" bpmnElement="cancelled_ride">
+        <di:waypoint x="940" y="252" />
+        <di:waypoint x="940" y="100" />
+        <di:waypoint x="480" y="100" />
+        <di:waypoint x="480" y="237" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="676" y="82" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_048ogv8_di" bpmnElement="Flow_048ogv8">
+        <di:waypoint x="530" y="277" />
+        <di:waypoint x="590" y="277" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13hh4jq_di" bpmnElement="Flow_13hh4jq">
+        <di:waypoint x="690" y="277" />
+        <di:waypoint x="750" y="277" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bjt7jk_di" bpmnElement="Flow_1bjt7jk">
+        <di:waypoint x="850" y="277" />
+        <di:waypoint x="915" y="277" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iorsll_di" bpmnElement="accept">
+        <di:waypoint x="940" y="302" />
+        <di:waypoint x="940" y="390" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="923" y="343" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ycjvog_di" bpmnElement="Flow_0ycjvog">
+        <di:waypoint x="900" y="430" />
+        <di:waypoint x="780" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fnp24j_di" bpmnElement="Flow_0fnp24j">
+        <di:waypoint x="680" y="430" />
+        <di:waypoint x="595" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yviwt8_di" bpmnElement="rejected">
+        <di:waypoint x="570" y="405" />
+        <di:waypoint x="570" y="307" />
+        <di:waypoint x="530" y="307" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="565" y="353" width="40" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12ghhnl_di" bpmnElement="accepted">
+        <di:waypoint x="545" y="430" />
+        <di:waypoint x="400" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="451" y="412" width="45" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1a6gw60_di" bpmnElement="Flow_1a6gw60">
+        <di:waypoint x="350" y="470" />
+        <di:waypoint x="350" y="540" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rycxs5_di" bpmnElement="Flow_0rycxs5">
+        <di:waypoint x="300" y="580" />
+        <di:waypoint x="215" y="580" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
